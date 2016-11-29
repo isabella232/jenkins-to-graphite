@@ -54,7 +54,7 @@ class JenkinsServer(object):
         if self._opener is None:
             opener = urllib2.build_opener(urllib2.HTTPCookieProcessor())
             if self.user or self.password:
-                opener.addheaders = [(("Authorization", "Basic " + base64.encodestring("%s:%s" % (self.user, self.password))))]
+                opener.addheaders = [(("Authorization", "Basic " + base64.b64encode("%s:%s" % (self.user, self.password))))]
             urllib2.install_opener(opener)
             self._opener = opener
 
